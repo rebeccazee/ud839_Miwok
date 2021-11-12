@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,5 +30,8 @@ public class NumbersActivity extends AppCompatActivity {
         String[] words = new String[]{
                 "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"
         };
+        for (int i = 0; i < words.length; i++) {
+            Log.v("NumbersActivity", "Word at index " + i + " : " + words[i]);
+        }
     }
 }
