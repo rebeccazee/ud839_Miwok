@@ -38,11 +38,10 @@ public class NumbersActivity extends AppCompatActivity {
                 )
         );
 
-        int index = 0;
-        while (index < words.size()) {
+        for (String word : words) {
             LinearLayout rootView = findViewById(R.id.rootView);
             TextView wordView = new TextView(this);
-            wordView.setText(words.get(index++));
+            wordView.setText(word);
             rootView.addView(wordView);
         }
     }
