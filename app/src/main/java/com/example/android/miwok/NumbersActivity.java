@@ -16,10 +16,14 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,11 +42,10 @@ public class NumbersActivity extends AppCompatActivity {
                 )
         );
 
-        for (String word : words) {
-            LinearLayout rootView = findViewById(R.id.rootView);
-            TextView wordView = new TextView(this);
-            wordView.setText(word);
-            rootView.addView(wordView);
-        }
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, words);
+
+        GridView gridView = findViewById(R.id.grid);
+
+        gridView.setAdapter(itemsAdapter);
     }
 }
