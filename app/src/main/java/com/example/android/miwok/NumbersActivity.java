@@ -16,14 +16,12 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -32,16 +30,33 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        List<String> words = new ArrayList<>(
+        // Create a list of words
+        ArrayList<Word> words = new ArrayList<>(
                 Arrays.asList(
-                        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"
+                        new Word("one", "lutti"),
+                        new Word("two", "otiiko"),
+                        new Word("three", "tolookosu"),
+                        new Word("four", "oyyisa"),
+                        new Word("five", "massokka"),
+                        new Word("six", "temmokka"),
+                        new Word("seven", "kenakaku"),
+                        new Word("eight", "kawinta"),
+                        new Word("nine", "wo,e"),
+                        new Word("ten", "na'aacha")
                 )
         );
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, words);
+        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        // adapter knows how to create list items for each item in the list.
+        WordAdapter wordAdapter = new WordAdapter(this, words);
 
+        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
+        // There should be a {@link ListView} with the view ID called list, which is declared in the
+        // activity_numbers.xml layout file.
         ListView listView = (ListView) findViewById(R.id.list);
 
-        listView.setAdapter(itemsAdapter);
+        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
+        // {@link ListView} will display list items for each {@link Word} in the list.
+        listView.setAdapter(wordAdapter);
     }
 }
