@@ -16,8 +16,9 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         // Create a list of words
-        ArrayList<Word> words = new ArrayList<Word>();
+        ArrayList<Word> words = new ArrayList<>();
         words.add(new Word("one", "lutti"));
         words.add(new Word("two", "otiiko"));
         words.add(new Word("three", "tolookosu"));
@@ -48,7 +49,7 @@ public class NumbersActivity extends AppCompatActivity {
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml layout file.
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Word} in the list.
