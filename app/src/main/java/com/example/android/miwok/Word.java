@@ -32,6 +32,11 @@ public class Word {
     private final String mMiwokTranslation;
 
     /**
+     * Image Resource ID for the word
+     */
+    private int mImageResourceID;
+
+    /**
      * Create a new Word object.
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
@@ -57,4 +62,10 @@ public class Word {
         return mMiwokTranslation;
     }
 
+    /**
+     * @return the image resource ID of the imege
+     */
+    public int getImageResourceID() {
+        return mImageResourceID;
+    }
 }
