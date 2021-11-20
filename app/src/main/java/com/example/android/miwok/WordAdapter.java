@@ -21,7 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -29,16 +32,19 @@ import java.util.ArrayList;
  * {@link WordAdapter} is an {@link ArrayAdapter} that can provide the layout for each list item
  * based on a data source, which is a list of {@link Word} objects.
  */
-public class WordAdapter extends ArrayAdapter<Word>  {
+public class WordAdapter extends ArrayAdapter<Word> {
+
+    private int mColorResourceID;
 
     /**
      * Create a new {@link WordAdapter} object.
      *
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
-     * @param words is the list of {@link Word}s to be displayed.
+     * @param words   is the list of {@link Word}s to be displayed.
      */
-    public WordAdapter(Context context, ArrayList<Word> words) {
+    public WordAdapter(Context context, ArrayList<Word> words, int colorResourceID) {
         super(context, 0, words);
+        mColorResourceID = colorResourceID;
     }
 
     @Override
@@ -75,6 +81,13 @@ public class WordAdapter extends ArrayAdapter<Word>  {
             // Otherwise hide the ImageView (set visibility to GONE)
             imageView.setVisibility(View.GONE);
         }
+
+        // Set the theme color for the list item
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        // Find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceID);
+        // Set the backgound color of the text container View
+        textContainer.setBackgroundColor(color);
 
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.
